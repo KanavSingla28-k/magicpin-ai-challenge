@@ -65,6 +65,15 @@ class ReplyReq(BaseModel):
     received_at: Optional[str] = None
     turn_number: int = 1
 
+@app.get("/")
+def root():
+    return {
+        "service": "Vera Bot",
+        "status": "ok",
+        "health": "/v1/healthz",
+        "docs": "/docs"
+    }
+
 @app.get("/v1/healthz")
 def healthz():
     return {
